@@ -1,0 +1,6 @@
+<div class="jumbotron">
+	<h3 class="center">Welcome to MyYelp App </h3>
+	</div>
+<% @restaurants.each do |restaurant| %>
+Restaurant: <%= link_to restaurant.name, restaurant%></br>
+<% end%>

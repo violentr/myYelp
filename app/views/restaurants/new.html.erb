@@ -1,0 +1,10 @@
+<p class="lead">Create new record of a restaurant </p>
+<%=form_for @restaurant do |f| %>
+<div class="form-group">
+	<%= f.label :name ,'Name',class: "sr-only"%>
+	<%= f.text_field :name, placeholder: "New Restaurant" %>
+	<%= f.label :description ,'Description',class: "sr-only"%>
+	<%= f.text_field :description, placeholder: "Description" %>
+	<%=f.submit value="OK", class: "btn btn-default"%>
+</div>
+<% end%>

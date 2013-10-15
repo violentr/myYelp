@@ -1,0 +1,11 @@
+<% content_for :nav do %>
+	<li ><%= link_to "Edit Record",edit_restaurant_path(@restaurant)%></li>
+<% end %>
+
+<H3>Personal Webpage for <%= @restaurant.name %> </H3>
+<p>Available in: <%=@restaurant.description %></p>
+<div id="image_link">
+	<%=link_to  "link", restaurant_images_path(@restaurant), remote: true %>
+<div id="put_here"></div>
+<a href='#' id="fade">Close</a>
+</div>
