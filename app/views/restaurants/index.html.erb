@@ -2,5 +2,10 @@
 	<h3 class="center">Welcome to myYelp</h3>
 	</div>
 <% @restaurants.each do |restaurant| %>
-Restaurant: <%= link_to restaurant.name, restaurant%></br>
+	<div>
+		<%= link_to restaurant.name, restaurant%>
+		<% restaurant.reviews.each do |review| %>
+			<span class="comment">Comments: <%=review.content %></span>
+		<% end%>
+	</div>	
 <% end%>

@@ -16,6 +16,7 @@ YelpMyVersion::Application.routes.draw do
   
   resources :restaurants do
     resources :images, only: [:index]
+    resources :reviews, only: [:index,:show]
   end
 
   # Example resource route with options:

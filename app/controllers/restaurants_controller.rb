@@ -1,12 +1,14 @@
 class RestaurantsController < ApplicationController
 	def index
 		@restaurants =Restaurant.all.order("restaurants.name ASC").limit(10)
+		@reviews =Review.all
 
 	end
 
 
 	def new
 		@restaurant=Restaurant.new
+		@restaurant.reviews.build if @restaurant.reviews.empty?
 	end
 
 	def show
@@ -25,6 +27,7 @@ class RestaurantsController < ApplicationController
 
 	def create
 		restaurant=Restaurant.new(rest_params)
+
 		if restaurant.save
 			redirect_to('/restaurants')
 		else
@@ -34,10 +37,12 @@ class RestaurantsController < ApplicationController
 
 	def edit
 		@restaurant=Restaurant.find(params[:id])
+		@restaurant.reviews.build if @restaurant.reviews.empty?
 	end
 
 	def update
 		@restaurant=Restaurant.find(params[:id])
+
 		if @restaurant.update_attributes(rest_params)
 			redirect_to(:action =>'show',:id =>@restaurant.id)
 		else
@@ -47,7 +52,7 @@ class RestaurantsController < ApplicationController
 
 	private
 	def rest_params
-    	params.require(:restaurant).permit(:name, :description)
+    	params.require(:restaurant).permit(:name, :description, reviews_attributes: [:id, :content])
   	end
 
 
