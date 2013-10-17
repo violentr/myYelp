@@ -13,6 +13,7 @@ class RestaurantsController < ApplicationController
 
 	def show
 		@restaurant=Restaurant.find(params[:id])
+		
 	end
 
 
@@ -26,11 +27,13 @@ class RestaurantsController < ApplicationController
 	# end
 
 	def create
-		restaurant=Restaurant.new(rest_params)
+		@restaurant=Restaurant.new(rest_params)
 
-		if restaurant.save
-			redirect_to('/restaurants')
+		if @restaurant.save
+			flash.now[:notice] ="Updated !!"
+			redirect_to @restaurant
 		else
+			flash.now[:errors] = @restaurant.errors.full_messages.join('')
 			render('new')
 		end
 	end
@@ -44,8 +47,10 @@ class RestaurantsController < ApplicationController
 		@restaurant=Restaurant.find(params[:id])
 
 		if @restaurant.update_attributes(rest_params)
+			flash[:notice] ="Your Record was updated"
 			redirect_to(:action =>'show',:id =>@restaurant.id)
 		else
+			flash.now[:errors] = @restaurant.errors.full_messages.join('')
 			render('edit')
 		end
 	end

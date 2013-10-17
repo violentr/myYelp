@@ -1,5 +1,8 @@
 <p class="lead">Create new record of a restaurant </p>
 <%=form_for @restaurant do |f| %>
+<div class="flash">
+	<%= flash[:errors] %>
+</div>
 <div class="form-group">
 	<%= f.label :name ,'Name',class: "sr-only"%>
 	<%= f.text_field :name, placeholder: "New Restaurant" %>

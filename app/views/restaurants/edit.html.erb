@@ -1,5 +1,8 @@
 <p class="lead">Edit Record of a restaurant </p>
 <%=form_for @restaurant do |f| %>
+<div class="flash">
+	<%= flash[:errors] %>
+</div>
 <div class="form-group">
 	<%= f.label :name ,'Name',class: "sr-only"%>
 	<%= f.text_field :name, placeholder: "Edit Restaurant" %>
@@ -7,9 +10,10 @@
 	<%= f.text_field :description, placeholder: "Description" %>
 </br></br>
 	<%= f.fields_for :reviews do |review_f| %>
-		<%= review_f.text_area :content ,placeholder:"Review this restaurant" ,rows: "10" ,cols: "46" %>
+		<%= review_f.text_area :content ,placeholder:"Review this restaurant" ,rows: "10" ,cols: "48" %>
 	<% end %>
 </br></br>
 	<%=f.submit class: "btn btn-default"%>
 </div>
+
 <% end%>

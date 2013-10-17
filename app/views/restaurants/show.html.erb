@@ -4,9 +4,12 @@
 
 <H3>Personal Webpage for <%= @restaurant.name %> </H3>
 <p>Available in: <%=@restaurant.description %></p>
+<% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+  <% end %>
 <div id="image_link">
 	<%=link_to  "link", restaurant_images_path(@restaurant), remote: true %>
 <div id="put_here"></div>
-<a href='#' id="fade">Close</a>
+	<a href='#' id="fade">Close</a>
 </div>
 <div class="twitter_feed"></div>

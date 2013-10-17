@@ -9,17 +9,13 @@ describe 'displays home page H1 content' do
 end
 
 describe 'displays first element from db' do
-let(:rest) {Restaurant.create(:name =>"FatDuck",:description =>"Chief Blumentals")}
+	before(:each){Restaurant.create!(:name =>"FatDuck",:description =>"Chief Blumentals")}
 	it 'should be with name and description' do
-		visit('/restaurants/new')
-		fill_in "Name", with: 'FatDuck'
-		fill_in "Description", with: "Chief Blumentals"
-		click_button "Create Restaurant"
+		visit('/restaurants')
 		click_link 'FatDuck'
 		expect(page).to have_content "Available in: Chief Blumentals"
 		# rest_record = rest.name
 		# expect(page).to have_content rest.name
-		
 	end
 end
 

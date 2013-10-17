@@ -4,9 +4,15 @@ describe Restaurant do
   it {should have_many(:reviews)}
   it {should have_many(:images)}
 
-  xit "should not be valid without a name" do
+  it "should not be valid without a name" do
   	rest = Restaurant.new
-  	expect(rest.name).not_to be_valid
+  	expect(rest).not_to be_valid
+  end
+
+  it "should have error messages without a name" do
+    rest = Restaurant.new
+    rest.valid?
+    expect(rest.errors.full_messages.include?("Name can't be blank")).to be_true
   end
 
   it "should add an image" do
@@ -20,4 +26,5 @@ describe Restaurant do
   	expect(rest.reviews.first.content).to eq "Nice food"
   end
   
+
 end
