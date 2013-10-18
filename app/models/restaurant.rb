@@ -12,5 +12,7 @@ class Restaurant < ActiveRecord::Base
 	def add_review(content)
 		reviews << Review.create(:content =>content)
 	end
-
+	def add_raitings(raiting)
+		reviews << Review.create(:raitings =>raiting)
+	end
 end

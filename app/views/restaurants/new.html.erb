@@ -12,7 +12,19 @@
 	<%= f.fields_for :reviews do |review_f| %>
 		<%= review_f.text_area :content ,placeholder:"Review this restaurant" ,rows: "10" ,cols: "46" %>
 	<% end %>
-</br></br>
+</br>
+	<div class='radio_b'>
+		<% 1.upto(5) do |n| %> 
+			<label>
+				<% n.times do %>
+					<%= image_tag('http://2.bp.blogspot.com/-Qv4StauwsKo/TjfsduadV8I/AAAAAAAAQsU/ffcRG6MIUrE/s1600/Gold-star-2-1.jpg', size: '20x20') %>
+				<% end %>
+				<%= radio_button_tag(:raitings, n) %>
+			</label>
+			</br>
+		<% end %>
+	</div>
+</br>
 	<%=f.submit class: "btn btn-default"%>
 </div>
 <% end%>

@@ -25,7 +25,7 @@ describe 'to crete new restaurant' do
 	fill_in 'Name', :with => 'New Restaurant'
 	fill_in 'Description', :with => 'This restaurant is in london'
 	click_button 'Create Restaurant'
-	expect(page).to have_content 'Welcome to myYelp'
+	expect(page).to have_content 'Personal Webpage'
 	end
 
 describe 'to view content (ajax)' do
@@ -65,5 +65,12 @@ describe 'to view content (ajax)' do
 
 		end
 	end
-
+	describe 'New created Review' do
+		# let!(:review) {Review.new(:raitings =>1)}
+		let!(:rest) {Restaurant.new(:name =>"FatDuck",:description =>"Chief Blumentals")}
+	  	it 'should have no raitings ,only the blank form (radio -buttons)' do
+  			visit new_restaurant_path
+  			expect(page).to have_css(".radio_b")
+		end
+	end
 end
